@@ -21,37 +21,37 @@ export interface ICheapSharkInfoResponse {
 }
 
 interface ICheapSharkCheaperStore {
-  readonly dealID: string,
-  readonly storeID: string,
-  readonly salePrice: string,
-  readonly retailPrice: string
+  readonly dealID: string;
+  readonly storeID: string;
+  readonly salePrice: string;
+  readonly retailPrice: string;
 }
 
 interface ICheapSharkDealGameInfo {
-  readonly storeID: string,
-  readonly gameID: string,
-  readonly name: string,
-  readonly steamAppID: string,
-  readonly salePrice: string,
-  readonly retailPrice: string,
-  readonly steamRatingText: string,
-  readonly steamRatingPercent: string,
-  readonly steamRatingCount: string,
-  readonly metacriticScore: string,
-  readonly metacriticLink: string,
-  readonly releaseDate: number,
-  readonly publisher: string,
-  readonly steamworks: string,
-  readonly thumb: string
+  readonly storeID: string;
+  readonly gameID: string;
+  readonly name: string;
+  readonly steamAppID: string;
+  readonly salePrice: string;
+  readonly retailPrice: string;
+  readonly steamRatingText: string;
+  readonly steamRatingPercent: string;
+  readonly steamRatingCount: string;
+  readonly metacriticScore: string;
+  readonly metacriticLink: string;
+  readonly releaseDate: number;
+  readonly publisher: string;
+  readonly steamworks: string;
+  readonly thumb: string;
 }
 
 interface ICheapSharkCheapestPrice {
-  readonly price: string,
-  readonly date: number
+  readonly price: string;
+  readonly date: number;
 }
 
 export interface ICheapSharkDealResponse {
-  readonly gameInfo: ICheapSharkDealGameInfo,
-  readonly cheaperStores: ICheapSharkCheaperStore[],
-  readonly cheapestPrice: ICheapSharkCheapestPrice
+  readonly gameInfo: ICheapSharkDealGameInfo;
+  readonly cheaperStores: ICheapSharkCheaperStore[];
+  readonly cheapestPrice: ICheapSharkCheapestPrice;
 }

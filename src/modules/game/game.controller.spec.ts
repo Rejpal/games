@@ -9,7 +9,9 @@ describe('Game Controller', () => {
     }).compile();
   });
   it('should be defined', () => {
-    const controller: GameController = module.get<GameController>(GameController);
+    const controller: GameController = module.get<GameController>(
+      GameController,
+    );
     expect(controller).toBeDefined();
   });
 });
