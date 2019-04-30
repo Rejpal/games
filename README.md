@@ -28,3 +28,11 @@ $ npm install
 ```bash
 $ npm start
 ```
+
+
+## Development notes
+- The call API is not private yet
+- Tests are not done yet
+- so Far I've spend 4 hours on the project
+- got stuck fot an hour and half on searching for suitable redis client for given project setup.
+- I'll have more time to work on the project tomorrow but for now this is all I have. I do not consider this a fullfilled task yet so please do not evaluate this as a final thing. Take it more like a possibility for first feedback.
