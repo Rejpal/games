@@ -21,10 +21,13 @@ You will work with API `https://www.cheapshark.com/api/`. Lucky for you somebody
 - Tests are up to you, if you will provide them, you will get in front of other candidates.
 
 ## Installation and run
+Copy `.env.example` to file `.env`
 
 ```bash
 $ npm install
 ```
+
+
 ```bash
 $ npm start
 ```

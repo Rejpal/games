@@ -1,6 +1,9 @@
 import { Controller, Get, Req, Res, HttpCode, HttpStatus } from '@nestjs/common';
 import { CallService } from './call.service';
 import { Request, Response } from 'express';
+import { getEnvVariable } from '../../utils/getEnvVariable';
+
+const ADMIN_KEY = getEnvVariable('ADMIN_KEY');
 
 @Controller('calls')
 export class CallController {
@@ -10,7 +13,7 @@ export class CallController {
   async getCalls(@Req() request: Request, @Res() response: Response) {
     const { headers } = request;
 
-    if (!headers || headers.adminkey !== 'testTest') {
+    if (!headers || headers.adminkey !== ADMIN_KEY) {
       response.status(HttpStatus.UNAUTHORIZED).send();
       return;
     }
