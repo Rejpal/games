@@ -28,7 +28,9 @@ export class GameService {
     return this.filterOutRedundantGameInfo(gamesDeals);
   }
 
-  private filterOutRedundantGameInfo (gameItems: ICheapSharkDealResponse[]): IGame[] {
+  private filterOutRedundantGameInfo(
+    gameItems: ICheapSharkDealResponse[],
+  ): IGame[] {
     const gamesList: IGame[] = [];
 
     gameItems.forEach((deal, index) => {
@@ -61,7 +63,9 @@ export class GameService {
     return res;
   }
 
-  private async fetchGameInfoByDealId(id: string): Promise<ICheapSharkDealResponse> {
+  private async fetchGameInfoByDealId(
+    id: string,
+  ): Promise<ICheapSharkDealResponse> {
     const res = await Axios.get(
       `http://www.cheapshark.com/api/1.0/deals?id=${id}`,
     );

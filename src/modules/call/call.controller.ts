@@ -1,4 +1,11 @@
-import { Controller, Get, Req, Res, HttpCode, HttpStatus } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Req,
+  Res,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
 import { CallService } from './call.service';
 import { Request, Response } from 'express';
 import { getEnvVariable } from '../../utils/getEnvVariable';
@@ -19,10 +26,8 @@ export class CallController {
     }
 
     try {
-      const mondayCalls = await this.callService.getCalls()
-      return response
-        .status(HttpStatus.OK)
-        .json(mondayCalls);
+      const mondayCalls = await this.callService.getCalls();
+      return response.status(HttpStatus.OK).json(mondayCalls);
     } catch (e) {
       throw Error(e);
     }
