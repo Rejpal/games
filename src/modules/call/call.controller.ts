@@ -1,14 +1,25 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Req, Res, HttpCode, HttpStatus } from '@nestjs/common';
 import { CallService } from './call.service';
+import { Request, Response } from 'express';
 
 @Controller('calls')
 export class CallController {
   constructor(private readonly callService: CallService) {}
 
   @Get('/')
-  async getCalls() {
+  async getCalls(@Req() request: Request, @Res() response: Response) {
+    const { headers } = request;
+
+    if (!headers || headers.adminkey !== 'testTest') {
+      response.status(HttpStatus.UNAUTHORIZED).send();
+      return;
+    }
+
     try {
-      return await this.callService.getCalls();
+      const mondayCalls = await this.callService.getCalls()
+      return response
+        .status(HttpStatus.OK)
+        .json(mondayCalls);
     } catch (e) {
       throw Error(e);
     }

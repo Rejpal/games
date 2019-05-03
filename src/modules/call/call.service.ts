@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import Axios, { AxiosResponse } from 'axios';
-import { getRedisClient } from '../../redis/redisClient';
+import { getRedisClient } from '../../utils/redisClient';
 
 const MONDAY = 1;
 const REDIS_CALL_LIST_KEY = 'calls';
