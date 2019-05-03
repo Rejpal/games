@@ -15,7 +15,7 @@ export class GameService {
     const gamesInfo: {
       data: ICheapSharkInfoResponse[];
     } = await this.fetchGameInfo();
-    const gamesDeals: { data: ICheapSharkDealResponse }[] = [];
+    const gamesDeals: ICheapSharkDealResponse[] = [];
     const gamesList: IGame[] = [];
 
     await Promise.all(
@@ -25,11 +25,17 @@ export class GameService {
       }),
     );
 
-    gamesDeals.forEach((deal, index) => {
+    return this.filterOutRedundantGameInfo(gamesDeals);
+  }
+
+  private filterOutRedundantGameInfo (gameItems: ICheapSharkDealResponse[]): IGame[] {
+    const gamesList: IGame[] = [];
+
+    gameItems.forEach((deal, index) => {
       const {
         gameInfo: { name, salePrice, releaseDate },
         cheapestPrice: { price },
-      } = deal.data;
+      } = deal;
 
       // if game was not released yet we do not include release date into the response to prevent confusion
       const convertedReleaseDate =
@@ -55,13 +61,13 @@ export class GameService {
     return res;
   }
 
-  private async fetchGameInfoByDealId(id: string): Promise<AxiosResponse> {
+  private async fetchGameInfoByDealId(id: string): Promise<ICheapSharkDealResponse> {
     const res = await Axios.get(
       `http://www.cheapshark.com/api/1.0/deals?id=${id}`,
     );
     if (res.status !== 200) {
       throw new Error(`Error fetching deal data. DealId: ${id}`);
     }
-    return res;
+    return res.data;
   }
 }
